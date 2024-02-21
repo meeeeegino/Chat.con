@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>My/Assistan/Chat.com</title>
+
+
+
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" type="text/css" href="chat.css">  
+</head>
+<style>
+*{
+    padding:0px; margin:0px;
+}
+#hb_bar{
+    height:65px;width:100%; color : white;background:#4070f2; position:fixed;
+}
+#chat_box{
+    width:100%;
+}
+#sms_bix{
+    height:100px;width:100%;box-shadow:0px 0px 10px grey;position:fixed; bottom:0px;background:white;
+}
+#sms_prf_logo{
+    height:50px;width:50px;margin:8px;border-radius:50%;float:left;
+}
+#m_s{
+   margin-top:15px; height:40px;width:70%;font-size:17px;
+}
+#send{
+   margin-top:15px; color :#4070f2;height:43px;width:70px;font-size:17px;
+}
+#s_name{
+  
+   margin:10px 0px;font-size:30px;float:left;
+}
+#online_sms{
+    float:left;
+  margin:45px -90px;font-size:10px;
+}
+#has_btn{
+    height:50px;width:50px;border-radius:50%;border:0 ;font-size:25px;float:right;margin:5px; background:0;color:white; transition:0.20s;
+}
+#has_btn:hover{
+    background:#38fc;
+}
+#sms_cover{
+    height:60px;width:100%; background:0;margin-top:10px
+}
+#re_sms_cover{
+    height:60px;width:100%; background:0;margin-top:10px
+}
+
+#new_sms{
+    background:pink;float:right;margin-right:15px;border-radius:10px;padding:10px;font-size:20px;
+}
+#re_sms{
+    background:green;float:left;margin-left:15px;border-radius:10px;padding:10px;font-size:20px;
+}
+
+
+#prf_cover{
+    height:200px;width:100%;
+}
+#prf_proft{
+    height:150px;width:150px;border-radius:50%;margin-top:-90px;margin-left:20px;border:5px solid white;
+}
+#prf_name{
+    margin:10px 15px;
+}
+#btn_h{
+    height:40px;width:120px;border-radius:5px;border:0;margin:10px 5px; background: #E8E8E8;
+}
+#p_btn{
+    height:40px;width:70px;border-radius:20px;border:0;margin:10px 5px;background:0;color:grey;
+}
+#p_btn:hover {
+    background:#c7c7ff;color:#4070f4;
+}
+#profile_page{
+    display:none;
+}
+#btn_call{
+    height:65px;width:65px;border-radius:50%;margin:10px 20px;font-size:35px;
+}
+</style>
+</head>
+<body>
+
+
+<div id="chat_page">
+<!-- this is chat page is the for your cajt page -->
+
+
+<div id="hb_bar">
+<center>
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdhmJYJoU3aXqiZ_NoT4CptDci8JOcXx8IxQ&usqp=CAU" id="sms_prf_logo"onclick="op_profile_page()"/>
+<span id="s_name" onclick="op_profile_page()"><b>Sohani</b></span>
+
+<span id="online_sms">Online</span>
+
+
+<button id="has_btn" style="height:30px;width:50px;border-radius:5px; transform:rotate(90deg);margin:15px 0px;"> <i class='bi bi-three-dots'></i>
+</button>
+
+
+<button id="has_btn" onclick="op_call_page()"><a class="fa fa-phone"></a></button>
+
+<button id="has_btn"><a class="fa fa-video-camera"></a></button>
+
+
+
+
+</div>
+
+
+<div id="chat_box">
+<div style="height:90px;width:100px;"></div>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<div style="height:150px;width:100%; background:0;"></div>
+
+
+<div id="sms_bix">
+<center>
+<input type="text" id="m_s" placeholder="  Type a message"/><button id="send" onclick="send()"><li class="fa fa-send"></li></button>
+
+</center>
+</div>
+
+
+</div> <!-- this is the chat pave close -->
+
+
+
+
+<div id="profile_page" >
+<div style="height:50px;width:100%; background:0;position:fixed;">
+</br>
+
+<button style="height:40px;width:80px;font-size:30px; background:0;border:0; color: white;float:right;"><i class='bi bi-back'></i>
+</button>
+</div>
+
+
+<div id="prf_cover" style="background:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRalA4CHR-9zdyt5xJ7jDZ9kwZG56MHnf7L8g&usqp=CAU');background-size:cover;">
+
+
+</div>
+
+
+
+
+<img onclick="op_edit_img()" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdhmJYJoU3aXqiZ_NoT4CptDci8JOcXx8IxQ&usqp=CAU" id="prf_proft"/>
+
+
+<h1 id="prf_name">Sohani</h1>
+<b style="margin-left:20px;">6.8k</b> <span style="color:grey;">Likes</span> <b>.</b><b>14K</b> <span style="color:grey;">follower</span>
+</br>
+<button style="margin:10px 20px;font-size:18px; background:0;border:0;">Open Web Design</button>
+</br><center>
+<button id="btn_h" onclick="op_sms_page()" style="background:#4070f2;color:white;"><b>Message</b></button>
+<button id="btn_h"><b>Like</b></button>
+<button id="btn_h" style="width:50px;"><b>...</b></button>
+</br></br>
+<div style="height:15px;width:100%; background: silver;"></div>
+
+<button id="p_btn"><b>Posts</b></button>
+<button id="p_btn"><b>About</b></button>
+<button id="p_btn"><b>Videos</b></button>
+<button id="p_btn"><b>More &nbsp; <li class="fa fa-sort-desc"> </li></b></button>
+</br>
+<div style="width:100%;background:silver;height:0.1px;border-radius:50%;"></div>
+
+<b style="float:left;margin:10px;font-size:20px;">Details</b></br></br>
+
+<button style="font-size:25px;float:left;color:grey;margin-left:-70px;border:0;background:0;">
+ <li  class="fa fa-info-circle"></li>
+ 
+ 
+
+</button>
+<b style="font-size:15px;color:black;float:left;margin:5px -40px;">&nbsp;Page</b></br>
+<div style="float:left;margin:10px;font-size:15px;"><button style="height:30px;width:50px;background:0;border:0;font-size:30px;"><b>...</b></button>seen sohani About ifo</div>
+</br></br></br>
+<div style="height:1px; background:grey;width:80%;"></div>
+</br></br>
+
+
+</div><!-- this is the profile page close -->
+
+
+
+<div id="calling_page" style="display:none;">
+<div style="height:100vh;width:100%;"
+>
+<button style="height:40px;font-size:20px;width:150px;margin:5px; background:0;border:0;"><b>Messenger Call</b></button>
+<center>
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdhmJYJoU3aXqiZ_NoT4CptDci8JOcXx8IxQ&usqp=CAU" style="height:200px;width:200px;border-radius:50%;box-shadow:0px 0px 10px grey;margin-top:40px;"/>
+</br>
+<h1 style="margin-top:10px;">Sohani</h1>
+<p style="color:grey;">Conneting...<p>
+</br>
+<div style="height:100px;width:100%;">
+<button id="btn_call">
+<li id="vl1" onclick="vl1()" class="fa fa-volume-up"></li>
+
+<li id="vl2" style="display:none;"onclick="vl2()"class="fa fa-volume-off"></li>
+
+
+</button>
+<button id="btn_call">
+
+<li onclick="mk1()" id="mk1" class="fa fa-microphone"></li>
+
+<li onclick="mk2()" style="display:none;"id="mk2"class="fa fa-microphone-slash"></li>
+
+</button>
+<button id="btn_call">
+<li id="cl1" onclick="cl1()"class="fa fa-camera"></li>
+
+<li id="cl2"onclick="cl2()" style="display:none;"class="fa fa-undo"></li>
+
+</button>
+</div>
+<button id="btn_call" onclick="btn_call()" style="background:red; color: white;border:0;margin-top:70px;"><li class="fa fa-phone"></li></button>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<script>
+function send(){
+    var chat_box = document.getElementById("chat_box");
+    var m_s = document.getElementById("m_s").value;
+var sms_cover = document.createElement("div");
+var re_sms_cover = document.createElement("div");
+
+var new_sms = document.createElement("div");
+
+var re_sms = document.createElement("div");
+
+
+
+sms_cover.id="sms_cover"
+new_sms.id="new_sms"
+re_sms_cover.id="re_sms_cover"
+re_sms.id="re_sms"
+new_sms.innerHTML=m_s;
+
+chat_box.appendChild(sms_cover).appendChild(new_sms);
+chat_box.appendChild(re_sms_cover).appendChild(re_sms);
+
+var a0 =""
+var a = "Hi"
+var a1 = "Hi "
+var a3 = "Hii"
+var a4 = "Hii "
+var a5 = "Hello"
+var a6 = "Hello "
+var a7 = "Hey"
+var a7 = "Hey "
+
+var b = "Kaise ho"
+var b1 = "Kaise ho "
+
+if(m_s===b||m_s===b1){
+        re_sms.innerHTML="Mai thik hu janu aap bolo kaise ho."
+    }
+
+
+if(m_s==a0){
+    re_sms.innerHTML="Please type me message"
+    new_sms.style.background="none";
+}
+
+
+document.getElementById("m_s").value="";
+    
+if(m_s===a||m_s===a1||m_s===a3||m_s===a4||m_s===a5||m_s===a6||m_s===a7||m_s===a8){
+    re_sms.innerHTML="Boliye 🥰"
+}
+
+    
+    
+}
+
+    
+    function op_sms_page(){
+        document.getElementById("chat_page"). style.display="block"
+        document.getElementById("profile_page").style.display="none"
+    }
+    
+    
+    function op_profile_page(){
+        document.getElementById("chat_page"). style.display="none"
+        document.getElementById("profile_page").style.display="block"
+    }
+    
+    function op_call_page(){
+        document.getElementById("chat_page"). style.display="none"
+        
+        
+        document.getElementById("calling_page"). style.display="block"
+        
+    }
+    
+    
+function vl1(){
+    document.getElementById("vl1").style.display="none";
+    document.getElementById("vl2").style.display="block";
+    
+}
+function vl2(){
+    document.getElementById("vl1").style.display="block";
+    document.getElementById("vl2").style.display="none";
+    
+}
+
+function mk1(){
+    document.getElementById("mk1").style.display="none";
+    document.getElementById("mk2").style.display="block";
+    
+}
+function mk2(){
+    document.getElementById("mk1").style.display="block";
+    document.getElementById("mk2").style.display="none";
+    
+}
+
+
+function cl1(){
+    document.getElementById("cl1").style.display="none";
+    document.getElementById("cl2").style.display="block";
+    
+}
+function cl2(){
+    document.getElementById("cl1").style.display="block";
+    document.getElementById("cl2").style.display="none";
+    
+}
+
+
+function btn_call(){
+    document.getElementById("calling_page").style.display="none"
+    
+    document.getElementById("chat_page").style.display="block"
+    
+    
+}
+
+</script>
+
+
+
+
+
+
+<script  src="/chat.js"></script>
+</body>
+</html>
